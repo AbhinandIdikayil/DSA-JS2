@@ -248,3 +248,159 @@ A binary tree is a tree where each node can have at most two children:
 Valid because:
 
 - Every node has `<= 2` children
+
+## 10. Types of Traversals
+
+There are 2 major categories:
+
+```text
+Traversal
+|-- DFS (Depth First Search)
+|   |-- Preorder
+|   |-- Inorder
+|   `-- Postorder
+|
+`-- BFS (Breadth First Search)
+    `-- Level Order
+```
+
+Traversal means visiting every node in a tree exactly once in a specific order.
+
+### DFS (Depth First Search)
+
+DFS goes as deep as possible before coming back up.
+
+It is usually implemented with:
+
+- recursion
+- a stack
+
+DFS is best when you want to explore one full branch before moving to the next branch.
+
+#### 1. Preorder
+
+Order:
+
+`Root -> Left -> Right`
+
+For this tree:
+
+```text
+         10
+        /  \
+       5    15
+      / \
+     2   7
+```
+
+Preorder traversal:
+
+`10, 5, 2, 7, 15`
+
+How it works:
+
+- visit the root first
+- then go left subtree
+- then go right subtree
+
+#### 2. Inorder
+
+Order:
+
+`Left -> Root -> Right`
+
+For this tree:
+
+```text
+         10
+        /  \
+       5    15
+      / \
+     2   7
+```
+
+Inorder traversal:
+
+`2, 5, 7, 10, 15`
+
+How it works:
+
+- go all the way to the left
+- visit the root
+- then visit the right subtree
+
+This traversal is very important in Binary Search Trees because it gives sorted values.
+
+#### 3. Postorder
+
+Order:
+
+`Left -> Right -> Root`
+
+For this tree:
+
+```text
+         10
+        /  \
+       5    15
+      / \
+     2   7
+```
+
+Postorder traversal:
+
+`2, 7, 5, 15, 10`
+
+How it works:
+
+- visit left subtree first
+- then right subtree
+- visit root last
+
+This is useful when you want to delete a tree or process children before the parent.
+
+### BFS (Breadth First Search)
+
+BFS visits nodes level by level.
+
+It is usually implemented with a:
+
+- queue
+
+BFS is best when you want to explore all nodes at the current depth before moving deeper.
+
+#### Level Order
+
+Order:
+
+`Level 0 -> Level 1 -> Level 2 ...`
+
+For this tree:
+
+```text
+         10
+        /  \
+       5    15
+      / \
+     2   7
+```
+
+Level order traversal:
+
+`10, 5, 15, 2, 7`
+
+How it works:
+
+- visit the root
+- add its children to a queue
+- remove nodes from the queue one by one
+- visit their children next
+
+### DFS vs BFS
+
+| Traversal | Style | Data Structure | Example Order |
+|-----------|-------|----------------|---------------|
+| Preorder  | DFS   | Stack/Recursion | 10, 5, 2, 7, 15 |
+| Inorder   | DFS   | Stack/Recursion | 2, 5, 7, 10, 15 |
+| Postorder | DFS   | Stack/Recursion | 2, 7, 5, 15, 10 |
+| Level Order | BFS | Queue | 10, 5, 15, 2, 7 |
